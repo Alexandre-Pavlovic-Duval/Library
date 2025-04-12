@@ -27,9 +27,12 @@ function displayBooks(book) {
     tbody.appendChild(newTr);
     tbody.appendChild(divId);
 
-    const tdId = document.createElement("td");
-    tdId.textContent = book.uniqueId;
-    newTr.appendChild(tdId);
+    const tdRead = document.createElement("td");
+    newTr.appendChild(tdRead);
+    const tdReadBtn = document.createElement("button");
+    tdReadBtn.textContent = "☑️"
+    tdReadBtn.classList.add("readingStatus")
+    tdRead.appendChild(tdReadBtn);
 
     const tdTitle = document.createElement("td")
     tdTitle.textContent = book.title;
@@ -51,14 +54,21 @@ function displayBooks(book) {
     tdDelete.appendChild(btnDelete);
 
     for (let i = 0; i < myLibrary.length; i++){
-        console.log("loop")
         document.querySelectorAll(".btnDeleted")[i].addEventListener("click", function () {
-            console.log("presque");
             this.parentNode.parentNode.remove();
         });
     };
 
-    console.log(myLibrary);
+    for (let i = 0; i < myLibrary.length ; i++){
+        document.querySelectorAll(".readingStatus")[i].addEventListener("click", function () {
+            if ( this.textContent === "☑️" ) {
+                this.textContent = "✅";
+            } else if ( this.textContent === "✅" ){
+                this.textContent = "☑️";
+            };
+            
+        });
+    };
 };
 const btnOpenDialog = document.querySelector("#btnOpenDialog").addEventListener("click", function() {
     document.querySelector("#opener").showModal();
@@ -73,6 +83,5 @@ const btnCloseDialog = document.querySelector("#btnCloseDialog").addEventListene
 
     document.querySelector("#opener").close();
 });
-
 
 // addBookToLibrary("Harry Potter and the Philisopher's Stone", "J. K. Rowling", 320);

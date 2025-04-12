@@ -6,13 +6,17 @@ table {
 }
 
 th, td {
-    border: 3px solid black;
+    border: 3px solid rgb(193, 50, 162);
 }
 
 
-/* body {
-    background-color: gray;
-} */
+body {
+    background-image: url(./images/library_picture.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed;   */
+}
 
 .directionLabel {
     display: flex;
